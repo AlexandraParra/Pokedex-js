@@ -178,12 +178,11 @@
 .close-modal button{
     border: none;
     background-color: transparent;
-    opacity: .3;
     font-size: 1.5rem;
 }
 
 .close-modal button:hover{
-    opacity: 1;
+    font-weight: 900;
 }
 
 .types-modal{

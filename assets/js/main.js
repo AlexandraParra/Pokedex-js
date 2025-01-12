@@ -63,7 +63,10 @@ function createPokemonModal(pokemonData) {
     modal.innerHTML = `
         <div class="modal-content">
             <div class="pokemon pokemon-modal ${pokemonData.type}">
-                <span class="number number-modal">#${pokemonData.number}</span>
+                <div class="close-modal">
+                    <span class="number number-modal">#${pokemonData.number}</span>
+                    <button>x</button>
+                </div>
                 <span class="name name-modal">${pokemonData.name}</span>
                 <ol class="types types-modal">
                     ${pokemonData.types.map((type) => `<li class="type ${type} type-modal">${type}</li>`).join('')}
@@ -101,9 +104,21 @@ function showModal(modal) {
 }
 
 function addModalCloseEvent(modal) {
-    window.addEventListener("click", (event) => {
+    function closeModalOnClickOutside(event) {
         if (event.target === modal) {
             modal.remove();
+            window.removeEventListener("click", closeModalOnClickOutside);
         }
-    });
+    }
+
+    window.addEventListener("click", closeModalOnClickOutside);
+
+    const closeButton = modal.querySelector(".close-modal button");
+    if (closeButton) {
+        closeButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            modal.remove();
+            window.removeEventListener("click", closeModalOnClickOutside);
+        });
+    }
 }

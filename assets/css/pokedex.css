@@ -165,8 +165,25 @@
 }
 
 .pokemon-modal{
-    border-radius: 1rem;
+    border-radius: 1rem 1rem 0 0;
     margin: 0%;
+}
+
+.close-modal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.close-modal button{
+    border: none;
+    background-color: transparent;
+    opacity: .3;
+    font-size: 1.5rem;
+}
+
+.close-modal button:hover{
+    opacity: 1;
 }
 
 .types-modal{
@@ -197,7 +214,7 @@
 .modal-description{
     background-color: #fff;
     padding: 30px 15px;
-    border-radius: 1rem;
+    border-radius: 0 0 1rem 1rem;
 }
 
 .modal-description table{
